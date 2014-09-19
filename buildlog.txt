@@ -1,0 +1,420 @@
+# Bake Begins!
+### (1 of 6) Copy sources
+$ cp -a /home/travis/build/fontdirectory/content/METADATA.json /home/travis/build/fontdirectory/content/builds/build
+$ cp -a /home/travis/build/fontdirectory/content/DESCRIPTION.en_us.html /home/travis/build/fontdirectory/content/builds/build
+$ cp -a Content-Regular.ttf.ttx Content-Bold.ttf.ttx Content-Regular.ttf._m_a_x_p.ttx Content-Regular.ttf._l_o_c_a.ttx Content-Regular.ttf._p_o_s_t.ttx Content-Regular.ttf._c_m_a_p.ttx Content-Regular.ttf._h_e_a_d.ttx Content-Regular.ttf._p_r_o_p.ttx Content-Regular.ttf._h_m_t_x.ttx Content-Regular.ttf._g_a_s_p.ttx Content-Regular.ttf.O_S_2f_2.ttx Content-Regular.ttf._g_l_y_f.ttx Content-Regular.ttf._n_a_m_e.ttx Content-Regular.ttf.G_S_U_B_.ttx Content-Regular.ttf.F_F_T_M_.ttx Content-Regular.ttf._m_o_r_x.ttx Content-Regular.ttf.G_P_O_S_.ttx Content-Regular.ttf._h_h_e_a.ttx Content-Regular.ttf.G_D_E_F_.ttx Content-Regular.ttf._f_e_a_t.ttx Content-Regular.ttf.GlyphOrder.ttx Content-Bold.ttf._p_o_s_t.ttx Content-Bold.ttf._n_a_m_e.ttx Content-Bold.ttf._g_l_y_f.ttx Content-Bold.ttf.G_P_O_S_.ttx Content-Bold.ttf._m_a_x_p.ttx Content-Bold.ttf._m_o_r_x.ttx Content-Bold.ttf.G_S_U_B_.ttx Content-Bold.ttf._g_a_s_p.ttx Content-Bold.ttf._h_e_a_d.ttx Content-Bold.ttf.F_F_T_M_.ttx Content-Bold.ttf._f_e_a_t.ttx Content-Bold.ttf._h_h_e_a.ttx Content-Bold.ttf._l_o_c_a.ttx Content-Bold.ttf.G_D_E_F_.ttx Content-Bold.ttf._p_r_o_p.ttx Content-Bold.ttf._c_m_a_p.ttx Content-Bold.ttf._h_m_t_x.ttx Content-Bold.ttf.GlyphOrder.ttx Content-Bold.ttf.O_S_2f_2.ttx /home/travis/build/fontdirectory/content/builds/build/sources
+### (2 of 6) pyfontaine
+### (3 of 6) Run upstream tests
+$ bakery-lint.py upstream-repo sources
+$ fontaine --collections subsets --text /home/travis/build/fontdirectory/content/builds/build/sources/Content-Regular.ttf.ttx /home/travis/build/fontdirectory/content/builds/build/sources/Content-Bold.ttf.ttx > fontaine.txt
+WARNING: Please install [PyICU](https://pypi.python.org/pypi/PyICU) toenable [feature], perhaps with: pip install pyicu
+end of pyfontaine process
+bakery_lint.tests.upstream.test_prepolation.FontTestPrepolation.test_font_prepolation_glyph_contours(): OK
+bakery_lint.tests.upstream.test_prepolation.FontTestPrepolation.test_font_prepolation_glyph_points(): OK
+bakery_lint.tests.upstream.test_prepolation.FontTestPrepolation.test_font_test_prepolation_glyph_names(): OK
+bakery_lint.tests.upstream.test_check_upstream_sources.ProjectUpstreamTestCase.test_bakery_yaml_exists(): OK
+bakery_lint.tests.upstream.test_check_upstream_sources.ProjectUpstreamTestCase.test_copyright_notices_same_across_family(): OK
+bakery_lint.tests.upstream.test_check_upstream_sources.ProjectUpstreamTestCase.test_description_html_exists(): OK
+bakery_lint.tests.upstream.test_check_upstream_sources.ProjectUpstreamTestCase.test_fontlog_txt_exists(): FAIL
+bakery_lint.tests.upstream.test_check_upstream_sources.ProjectUpstreamTestCase.test_metadata_json_exists(): OK
+bakery_lint.tests.upstream.test_diacritic.TestDiacritic.test_diacritic_made_as_component(): OK
+bakery_lint.tests.upstream.test_diacritic.TestDiacritic.test_diacritic_made_as_mark_to_mark(): OK
+bakery_lint.tests.upstream.test_diacritic.TestDiacritic.test_diacritic_made_as_own_glyphs(): OK
+$ bakery-lint.py upstream-ttx Content-Regular.ttf.ttx
+bakery_lint.tests.upstream.test_font_filename_eq_familystyle.TestTTFSourceFontFileNameEqualsFamilyStyle.test_source_ttf_font_filename_equals_familystyle(): FAIL
+$ mv /home/travis/build/fontdirectory/content/builds/build/sources/Content-Regular.ttf.ttx /home/travis/build/fontdirectory/content/builds/build/sources/Content-Regular.ttx
+bakery_lint.tests.upstream.test_font_filename_eq_familystyle.TestTTFSourceFontFileNameEqualsFamilyStyle.test_source_ttf_font_filename_equals_familystyle(): OK
+bakery_lint.tests.upstream.test_check_ttx_requirements.SourceTTXTest.test_epar_in_keys(): FAIL
+bakery_lint.tests.upstream.test_check_ttx_requirements.SourceTTXTest.test_os2_in_keys(): OK
+bakery_lint.tests.upstream.test_check_ttx_requirements.SourceTTXTest.test_ttx_doesnt_contain_duplicate_glyphs(): OK
+bakery_lint.tests.upstream.test_glyphname_does_not_contain_disallowed_chars.TestGlyphNameDoesNotContainsDisallowedChars.test_glyphname_does_not_contain_disallowed_chars(): FAIL
+bakery_lint.tests.upstream.test_check_ttx_fontfamily_recommendations.TTX_FontFamilyNamingTest.test_ttx_family_naming_recommendation(): OK
+$ bakery-lint.py upstream-ttx Content-Bold.ttf.ttx
+bakery_lint.tests.upstream.test_font_filename_eq_familystyle.TestTTFSourceFontFileNameEqualsFamilyStyle.test_source_ttf_font_filename_equals_familystyle(): FAIL
+$ mv /home/travis/build/fontdirectory/content/builds/build/sources/Content-Bold.ttf.ttx /home/travis/build/fontdirectory/content/builds/build/sources/Content-Bold.ttx
+bakery_lint.tests.upstream.test_font_filename_eq_familystyle.TestTTFSourceFontFileNameEqualsFamilyStyle.test_source_ttf_font_filename_equals_familystyle(): OK
+bakery_lint.tests.upstream.test_check_ttx_requirements.SourceTTXTest.test_epar_in_keys(): FAIL
+bakery_lint.tests.upstream.test_check_ttx_requirements.SourceTTXTest.test_os2_in_keys(): OK
+bakery_lint.tests.upstream.test_check_ttx_requirements.SourceTTXTest.test_ttx_doesnt_contain_duplicate_glyphs(): OK
+bakery_lint.tests.upstream.test_glyphname_does_not_contain_disallowed_chars.TestGlyphNameDoesNotContainsDisallowedChars.test_glyphname_does_not_contain_disallowed_chars(): FAIL
+bakery_lint.tests.upstream.test_check_ttx_fontfamily_recommendations.TTX_FontFamilyNamingTest.test_ttx_family_naming_recommendation(): OK
+### (4 of 6) Convert sources to TTF
+$ ttx -d /home/travis/build/fontdirectory/content/builds/build /home/travis/build/fontdirectory/content/builds/build/sources/Content-Bold.ttx /home/travis/build/fontdirectory/content/builds/build/sources/Content-Regular.ttx
+Compiling "/home/travis/build/fontdirectory/content/builds/build/sources/Content-Bold.ttx" to "/home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf"...
+Parsing 'GlyphOrder' table...
+Parsing 'head' table...
+Parsing 'hhea' table...
+Parsing 'maxp' table...
+Parsing 'OS/2' table...
+Parsing 'hmtx' table...
+Parsing 'cmap' table...
+Parsing 'loca' table...
+Parsing 'glyf' table...
+Parsing 'name' table...
+Parsing 'post' table...
+Parsing 'gasp' table...
+Parsing 'FFTM' table...
+Parsing 'GDEF' table...
+Parsing 'GPOS' table...
+Parsing 'GSUB' table...
+Parsing 'feat' table...
+Parsing 'morx' table...
+Parsing 'prop' table...
+Compiling "/home/travis/build/fontdirectory/content/builds/build/sources/Content-Regular.ttx" to "/home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf"...
+Parsing 'GlyphOrder' table...
+Parsing 'head' table...
+Parsing 'hhea' table...
+Parsing 'maxp' table...
+Parsing 'OS/2' table...
+Parsing 'hmtx' table...
+Parsing 'cmap' table...
+Parsing 'loca' table...
+Parsing 'glyf' table...
+Parsing 'name' table...
+Parsing 'post' table...
+Parsing 'gasp' table...
+Parsing 'FFTM' table...
+Parsing 'GDEF' table...
+Parsing 'GPOS' table...
+Parsing 'GSUB' table...
+Parsing 'feat' table...
+Parsing 'morx' table...
+Parsing 'prop' table...
+### Test Content-Bold.ttf
+$ bakery-lint.py result Content-Bold.ttf
+### Test Content-Regular.ttf
+### (5 of 6) Generate METADATA.json (genmetadata.py)
+$ bakery-lint.py result Content-Regular.ttf
+$ genmetadata.py /home/travis/build/fontdirectory/content/builds/build
+{} exists
+Designer's name from font is: Danh Hong
+bakery_lint.tests.downstream.test_gpos_table_has_kerning_info.CheckGposTableHasKerningInfo.test_gpos_table_has_kerning_info(): FAIL
+bakery_lint.tests.downstream.test_check_font_agreements.CheckFsTypeIsNotSet.test_is_fstype_not_set(): FAIL
+$ bakery-fstype-fix.py --autofix /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+bakery_lint.tests.downstream.test_gpos_table_has_kerning_info.CheckGposTableHasKerningInfo.test_gpos_table_has_kerning_info(): FAIL
+bakery_lint.tests.downstream.test_check_font_agreements.CheckFsTypeIsNotSet.test_is_fstype_not_set(): FAIL
+$ bakery-fstype-fix.py --autofix /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf
+$ mv /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf.fix /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+$ mv /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf.fix /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf
+bakery_lint.tests.downstream.test_check_font_agreements.CheckFsTypeIsNotSet.test_is_fstype_not_set(): OK
+$ bakery-fstype-fix.py --autofix /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+bakery_lint.tests.downstream.test_check_font_agreements.CheckFsTypeIsNotSet.test_is_fstype_not_set(): OK
+$ bakery-fstype-fix.py --autofix /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf
+$ mv /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf.fix /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+$ mv /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf.fix /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf
+bakery_lint.tests.downstream.test_check_font_agreements.CheckFontAgreements.test_em_is_1000(): FAIL
+bakery_lint.tests.downstream.test_check_font_agreements.CheckFontAgreements.test_em_is_1000(): FAIL
+bakery_lint.tests.downstream.test_check_font_agreements.CheckFontAgreements.test_file_is_font(): OK
+bakery_lint.tests.downstream.test_check_font_agreements.CheckFontAgreements.test_file_is_font(): OK
+bakery_lint.tests.downstream.test_check_font_agreements.CheckFontAgreements.test_font_is_font(): OK
+bakery_lint.tests.downstream.test_check_font_agreements.CheckFontAgreements.test_latin_file_exists(): FAIL
+bakery_lint.tests.downstream.test_check_font_agreements.CheckFontAgreements.test_font_is_font(): OK
+bakery_lint.tests.downstream.test_check_font_agreements.CheckFontAgreements.test_latin_file_exists(): FAIL
+bakery_lint.tests.downstream.test_check_magic_prep_code.CheckMagicPREPByteCode.test_prep_magic_code(): FAIL
+bakery_lint.tests.downstream.test_check_magic_prep_code.CheckMagicPREPByteCode.test_prep_magic_code(): FAIL
+bakery_lint.tests.downstream.test_check_name_table_recommendation.CheckStyleNameRecommendation.test_check_stylename_is_under_recommendations(): OK
+bakery_lint.tests.downstream.test_check_name_table_recommendation.CheckStyleNameRecommendation.test_check_stylename_is_under_recommendations(): OK
+bakery_lint.tests.downstream.test_check_name_table_recommendation.CheckOTFamilyNameRecommendation.test_check_opentype_familyname(): FAIL
+$ bakery-opentype-fix.py /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+bakery_lint.tests.downstream.test_check_name_table_recommendation.CheckOTFamilyNameRecommendation.test_check_opentype_familyname(): FAIL
+$ bakery-opentype-fix.py /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf
+Original size: 302020\nGzip size: 63242
+Family Name: Content
+PS Name: Content
+Full Name: Content
+Style: normal
+Weight: 400
+Filename: Content-Regular.ttf
+Copyright: Copyright (c) 2010, Danh Hong (khmertype.blogspot.com),??with Reserved Font Name Khmer OS Content.??This Font Software is licensed under the SIL Open Font License, Version 1.1.??This license is available with a FAQ at: http://scripts.sil.org/OFL
+Family Name: Content
+PS Name: Content-Bold
+Full Name: Content Bold
+$ mv /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf.fix /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+$ mv /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf.fix /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf
+bakery_lint.tests.downstream.test_check_name_table_recommendation.CheckOTFamilyNameRecommendation.test_check_opentype_familyname(): OK
+Style: normal
+Weight: 700
+Filename: Content-Bold.ttf
+Copyright: Copyright (c) 2010, Danh Hong (khmertype.blogspot.com),??with Reserved Font Name Khmer OS Content.??This Font Software is licensed under the SIL Open Font License, Version 1.1.??This license is available with a FAQ at: http://scripts.sil.org/OFL
+bakery_lint.tests.downstream.test_check_name_table_recommendation.CheckOTFamilyNameRecommendation.test_check_opentype_familyname(): OK
+bakery_lint.tests.downstream.test_check_name_table_recommendation.CheckOTStyleNameRecommendation.test_check_opentype_stylename(): OK
+bakery_lint.tests.downstream.test_check_name_table_recommendation.CheckOTStyleNameRecommendation.test_check_opentype_stylename(): OK
+bakery_lint.tests.downstream.test_check_name_table_recommendation.CheckOTFullNameRecommendation.test_check_opentype_fullname(): OK
+bakery_lint.tests.downstream.test_check_panose_identification.CheckPanoseIdentification.test_check_panose_identification(): OK
+bakery_lint.tests.downstream.test_check_name_table_recommendation.CheckOTFullNameRecommendation.test_check_opentype_fullname(): OK
+bakery_lint.tests.downstream.test_check_upm_heights_less_120.TestCheckUPMHeightsLess120.test_check_upm_heigths_less_120(): FAIL
+### (6 of 6) Run tests for METADATA.json
+bakery_lint.tests.downstream.test_check_panose_identification.CheckPanoseIdentification.test_check_panose_identification(): OK
+$ bakery-lint.py metadata METADATA.json
+bakery_lint.tests.downstream.test_check_upm_heights_less_120.TestCheckUPMHeightsLess120.test_check_upm_heigths_less_120(): FAIL
+bakery_lint.tests.downstream.test_check_hmtx_hhea_max_advance_width_agreement.CheckHmtxHheaMaxAdvanceWidthAgreement.test_check_hmtx_hhea_max_advance_width_agreement(): OK
+bakery_lint.tests.downstream.test_check_font_tables.CheckFontHasDsigTable.test_check_font_has_dsig_table(): FAIL
+$ bakery-dsig.py /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+bakery_lint.tests.downstream.test_check_hmtx_hhea_max_advance_width_agreement.CheckHmtxHheaMaxAdvanceWidthAgreement.test_check_hmtx_hhea_max_advance_width_agreement(): OK
+bakery_lint.tests.downstream.test_check_font_tables.CheckFontHasDsigTable.test_check_font_has_dsig_table(): FAIL
+$ bakery-dsig.py /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf
+bakery_lint.tests.metadata_test.MetadataSubsetsListTest.test_charset_khmer(): FAIL
+bakery_lint.tests.metadata_test.MetadataSubsetsListTest.test_charset_menu(): FAIL
+bakery_lint.tests.metadata_test.MetadataTest.test_description_is_more_than_500b(): FAIL
+bakery_lint.tests.metadata_test.MetadataTest.test_description_is_valid_html(): OK
+$ mv /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf.fix /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+bakery_lint.tests.downstream.test_check_font_tables.CheckFontHasDsigTable.test_check_font_has_dsig_table(): OK
+bakery_lint.tests.downstream.test_check_font_tables.CheckFontHasNotKernTable.test_no_kern_table_exists(): OK
+$ mv /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf.fix /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf
+bakery_lint.tests.downstream.test_check_font_tables.CheckFontHasDsigTable.test_check_font_has_dsig_table(): OK
+bakery_lint.tests.downstream.test_check_font_tables.CheckFontHasNotKernTable.test_no_kern_table_exists(): OK
+bakery_lint.tests.downstream.test_check_nbsp_width_matches_sp_width.CheckNbspWidthMatchesSpWidth.test_check_nbsp_width_matches_sp_width(): FAIL
+$ bakery-nbsp-fix.py /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+bakery_lint.tests.downstream.test_check_nbsp_width_matches_sp_width.CheckNbspWidthMatchesSpWidth.test_check_nbsp_width_matches_sp_width(): FAIL
+$ bakery-nbsp-fix.py /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf
+$ mv /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf.fix /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+$ mv /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf.fix /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf
+bakery_lint.tests.downstream.test_check_nbsp_width_matches_sp_width.CheckNbspWidthMatchesSpWidth.test_check_nbsp_width_matches_sp_width(): FAIL
+bakery_lint.tests.downstream.test_names_are_ascii_only.CheckNamesAreASCIIOnly.test_check_names_are_ascii_only(): FAIL
+$ bakery-ascii-fix.py /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+bakery_lint.tests.downstream.test_check_nbsp_width_matches_sp_width.CheckNbspWidthMatchesSpWidth.test_check_nbsp_width_matches_sp_width(): FAIL
+bakery_lint.tests.downstream.test_names_are_ascii_only.CheckNamesAreASCIIOnly.test_check_names_are_ascii_only(): FAIL
+$ bakery-ascii-fix.py /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf
+$ mv /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf.fix /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+bakery_lint.tests.downstream.test_names_are_ascii_only.CheckNamesAreASCIIOnly.test_check_names_are_ascii_only(): OK
+$ mv /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf.fix /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf
+bakery_lint.tests.downstream.test_check_glyph_existence.CheckGlyphExistence.test_euro(): FAIL
+bakery_lint.tests.downstream.test_names_are_ascii_only.CheckNamesAreASCIIOnly.test_check_names_are_ascii_only(): OK
+bakery_lint.tests.downstream.test_check_glyph_existence.CheckGlyphExistence.test_nbsp(): OK
+bakery_lint.tests.downstream.test_check_glyph_existence.CheckGlyphExistence.test_euro(): FAIL
+bakery_lint.tests.downstream.test_check_glyph_existence.CheckGlyphExistence.test_space(): OK
+bakery_lint.tests.downstream.test_check_glyph_existence.CheckGlyphExistence.test_nbsp(): OK
+bakery_lint.tests.downstream.test_check_glyph_existence.CheckGlyphExistence.test_space(): OK
+bakery_lint.tests.metadata_test.MetadataTest.test_does_not_familyName_exist_in_daltonmaag_catalogue(): FAIL
+bakery_lint.tests.metadata_test.MetadataTest.test_does_not_familyName_exist_in_fontbureau_catalogue(): FAIL
+bakery_lint.tests.downstream.test_check_vertical_metrics.CheckVerticalLinegapMetrics.test_metrics_linegaps_are_zero(): FAIL
+bakery_lint.tests.downstream.test_check_vertical_metrics.CheckVerticalLinegapMetrics.test_metrics_linegaps_are_zero(): FAIL
+$ bakery-vmet-fix.py --autofix /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+$ bakery-vmet-fix.py --autofix /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+bakery_lint.tests.metadata_test.MetadataTest.test_does_not_familyName_exist_in_fontscom_catalogue(): OK
+bakery_lint.tests.metadata_test.MetadataTest.test_does_not_familyName_exist_in_fontshop_catalogue(): FAIL
+$ mv /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf.fix /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf
+$ mv /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf.fix /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+$ bakery-vmet-fix.py /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+Process Process-8:
+Traceback (most recent call last):
+  File "/opt/python/2.7.8/lib/python2.7/multiprocessing/process.py", line 258, in _bootstrap
+    self.run()
+  File "/opt/python/2.7.8/lib/python2.7/multiprocessing/process.py", line 114, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/travis/virtualenv/python2.7.8/lib/python2.7/site-packages/bakery_cli/pipe/build.py", line 114, in run_processes
+    fontlint.run(filename, pipedata)
+  File "/home/travis/virtualenv/python2.7.8/lib/python2.7/site-packages/bakery_cli/pipe/fontlint.py", line 60, in run
+    log=self.bakery.logger)
+  File "/home/travis/virtualenv/python2.7.8/lib/python2.7/site-packages/bakery_lint/__init__.py", line 27, in run_set
+    return run_suite(tests_suite)
+  File "/home/travis/virtualenv/python2.7.8/lib/python2.7/site-packages/bakery_lint/base.py", line 246, in run_suite
+    runner.run(suite)
+  File "/home/travis/virtualenv/python2.7.8/lib/python2.7/site-packages/bakery_lint/base.py", line 171, in run
+    test(result)
+  File "/opt/python/2.7.8/lib/python2.7/unittest/suite.py", line 70, in __call__
+    return self.run(*args, **kwds)
+  File "/opt/python/2.7.8/lib/python2.7/unittest/suite.py", line 108, in run
+    test(result)
+  File "/opt/python/2.7.8/lib/python2.7/unittest/case.py", line 393, in __call__
+    return self.run(*args, **kwds)
+  File "/opt/python/2.7.8/lib/python2.7/unittest/case.py", line 333, in run
+    result.addFailure(self, sys.exc_info())
+  File "/home/travis/virtualenv/python2.7.8/lib/python2.7/site-packages/bakery_lint/base.py", line 136, in addFailure
+    self.callmethod(test_method.autofix_method, test)
+  File "/home/travis/virtualenv/python2.7.8/lib/python2.7/site-packages/bakery_lint/base.py", line 91, in callmethod
+    getattr(mod, methodname.split('.')[-1])(test)
+  File "/home/travis/virtualenv/python2.7.8/lib/python2.7/site-packages/bakery_cli/pipe/autofix.py", line 132, in fix_metrics
+    testcase.operator.debug(metricview(paths))
+  File "/home/travis/virtualenv/python2.7.8/lib/python2.7/site-packages/bakery_cli/scripts/vmet.py", line 41, in metricview
+    metrics = Font(f)
+  File "/home/travis/virtualenv/python2.7.8/lib/python2.7/site-packages/bakery_cli/ttfont.py", line 43, in __init__
+    self.ttfont = ttLib.TTFont(fontpath)
+  File "/home/travis/virtualenv/python2.7.8/lib/python2.7/site-packages/FontTools/fontTools/ttLib/__init__.py", line 166, in __init__
+    self.reader = sfnt.SFNTReader(file, checkChecksums, fontNumber=fontNumber)
+  File "/home/travis/virtualenv/python2.7.8/lib/python2.7/site-packages/FontTools/fontTools/ttLib/sfnt.py", line 49, in __init__
+    sstruct.unpack(sfntDirectoryFormat, self.file.read(sfntDirectorySize), self)
+  File "/home/travis/virtualenv/python2.7.8/lib/python2.7/site-packages/FontTools/fontTools/misc/sstruct.py", line 87, in unpack
+    elements = struct.unpack(formatstring, data)
+error: unpack requires a string argument of length 12
+spaceWidth is    569
+nbspWidth is     569
+Nothing to do
+$ mv /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf.fix /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf
+Error: 
+$ mv /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf.fix /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+$ bakery-vmet-fix.py /home/travis/build/fontdirectory/content/builds/build/Content-Regular.ttf /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+bakery_lint.tests.metadata_test.MetadataTest.test_does_not_familyName_exist_in_fontsmith_catalogue(): FAIL
+bakery_lint.tests.metadata_test.MetadataTest.test_does_not_familyName_exist_in_houseind_catalogue(): OK
+bakery_lint.tests.metadata_test.MetadataTest.test_does_not_familyName_exist_in_myfonts_catalogue(): OK
+bakery_lint.tests.metadata_test.MetadataTest.test_does_not_familyName_exist_in_veer_catalogue(): FAIL
+bakery_lint.tests.metadata_test.MetadataTest.test_family_is_listed_in_gwf(): OK
+bakery_lint.tests.metadata_test.MetadataTest.test_metadata_atleast_latin_menu_subsets_exist(): FAIL
+Parameter              Content-Regular.ttf    Content-Bold.ttf    
+ymax                   2500                   2500                
+hhea.ascent            2500                   2500                
+OS/2.sTypoAscender     2500                   2500                
+OS/2.usWinAscent       2500                   2500                
+ymin                   -1200                  -1200               
+hhea.descent           -1200                  -1200               
+OS/2.sTypoDescender    -1200                  -1200               
+OS/2.usWinDescent      1200                   1200                
+hhea.lineGap           0                      0                   
+OS/2.sTypoLineGap      0                      0                   
+hhea total             3700                   3700                
+typo total             3700                   3700                
+win total              3700                   3700                
+UPM:Heights            2048:3700              2048:3700           
+UPM:Heights %          180 %                  180 %               
+
+
+/home/travis/virtualenv/python2.7.8/lib/python2.7/site-packages/bakery_lint/tests/metadata_test.py:141: UnicodeWarning: Unicode equal comparison failed to convert both arguments to Unicode - interpreting them as being unequal
+  self.assertTrue(designer in designers,
+bakery_lint.tests.metadata_test.MetadataTest.test_metadata_designer_exists_in_profiles_csv(): OK
+bakery_lint.tests.metadata_test.MetadataTest.test_metadata_fonts_items_dicts(): OK
+bakery_lint.tests.metadata_test.MetadataTest.test_metadata_fonts_key_list(): OK
+bakery_lint.tests.metadata_test.MetadataTest.test_metadata_fonts_no_dupes(): OK
+bakery_lint.tests.metadata_test.MetadataTest.test_metadata_has_unique_style_weight_pairs(): OK
+bakery_lint.tests.metadata_test.MetadataTest.test_metadata_keys(): OK
+bakery_lint.tests.metadata_test.MetadataTest.test_metadata_license(): OK
+bakery_lint.tests.metadata_test.MetadataTest.test_metadata_no_unknown_top_keys(): OK
+bakery_lint.tests.metadata_test.MetadataTest.test_metadata_subsets_key_list(): OK
+bakery_lint.tests.metadata_test.MetadataTest.test_metadata_top_keys_types(): FAIL
+bakery_lint.tests.downstream.test_check_font_name_not_in_camelcase.CheckFontNameNotInCamelCase.test_fontname_not_in_camel_case(): OK
+bakery_lint.tests.downstream.test_check_text_files_exist.CheckTextFilesExist.test_copyrighttxt_exists(): FAIL
+bakery_lint.tests.downstream.test_check_text_files_exist.CheckTextFilesExist.test_description_exists(): OK
+bakery_lint.tests.downstream.test_check_text_files_exist.CheckTextFilesExist.test_fontlogtxt_exists(): FAIL
+bakery_lint.tests.downstream.test_check_text_files_exist.CheckTextFilesExist.test_licensetxt_exists(): FAIL
+bakery_lint.tests.downstream.test_check_canonical_weights.CheckCanonicalWeights.test_check_canonical_weights(): OK
+bakery_lint.tests.downstream.test_check_canonical_weights.CheckPostScriptNameMatchesWeight.test_postscriptname_contains_correct_weight(): FAIL
+bakery_lint.tests.downstream.test_check_canonical_weights.CheckFontWeightSameAsInMetadata.test_font_weight_same_as_in_metadata(): OK
+bakery_lint.tests.downstream.test_check_canonical_weights.CheckFullNameEqualCanonicalName.test_metadata_contains_current_font(): OK
+bakery_lint.tests.downstream.test_check_monospace_agreements.CheckMonospaceAgreement.test_check_monospace_agreement(): OK
+bakery_lint.tests.downstream.test_check_subsets_exists.CheckSubsetsExist.test_check_subsets_exists(): FAIL
+bakery_lint.tests.downstream.test_metadata_font_copyright.CheckMetadataContainsReservedFontName.test_copyright_contains_correct_rfn(): OK
+bakery_lint.tests.downstream.test_metadata_font_copyright.CheckMetadataContainsReservedFontName.test_copyright_is_consistent_across_family(): OK
+bakery_lint.tests.downstream.test_metadata_font_copyright.CheckMetadataContainsReservedFontName.test_copyright_matches_pattern(): OK
+bakery_lint.tests.downstream.test_metadata_font_copyright.CheckMetadataContainsReservedFontName.test_metadata_copyright_size(): OK
+bakery_lint.tests.downstream.test_check_metadata_style_matches_names.CheckItalicStyleMatchesMacStyle.test_check_italic_style_matches_names(): OK
+bakery_lint.tests.downstream.test_check_metadata_style_matches_names.CheckNormalStyleMatchesMacStyle.test_check_normal_style_matches_names(): OK
+bakery_lint.tests.downstream.test_check_familyname_matches_fontnames.CheckFamilyNameMatchesFontNames.test_check_familyname_matches_fontnames(): OK
+bakery_lint.tests.downstream.test_check_canonical_styles.CheckCanonicalStyles.test_check_canonical_styles(): OK
+bakery_lint.tests.downstream.test_check_menu_contains_proper_glyphs.CheckMenuSubsetContainsProperGlyphs.test_check_menu_contains_proper_glyphs(): ERROR
+bakery_lint.tests.downstream.test_metadata_agreements.CheckMetadataAgreements.test_font_name_matches_family(): OK
+bakery_lint.tests.downstream.test_metadata_agreements.CheckMetadataAgreements.test_metadata_family(): OK
+bakery_lint.tests.downstream.test_metadata_agreements.CheckMetadataAgreements.test_metadata_family_values_are_all_the_same(): OK
+bakery_lint.tests.downstream.test_metadata_agreements.CheckMetadataAgreements.test_metadata_filename_matches_postScriptName(): FAIL
+bakery_lint.tests.downstream.test_metadata_agreements.CheckMetadataAgreements.test_metadata_font_have_regular(): OK
+bakery_lint.tests.downstream.test_metadata_agreements.CheckMetadataAgreements.test_metadata_fonts_fields_have_fontname(): OK
+bakery_lint.tests.downstream.test_metadata_agreements.CheckMetadataAgreements.test_metadata_fullname_is_equal_to_internal_font_fullname(): OK
+bakery_lint.tests.downstream.test_metadata_agreements.CheckMetadataAgreements.test_metadata_fullname_matches_postScriptName(): OK
+bakery_lint.tests.downstream.test_metadata_agreements.CheckMetadataAgreements.test_metadata_postScriptName_matches_ttf_fontname(): OK
+bakery_lint.tests.downstream.test_metadata_agreements.CheckMetadataAgreements.test_metadata_regular_is_400(): FAIL
+bakery_lint.tests.downstream.test_metadata_agreements.CheckMetadataAgreements.test_metadata_regular_is_normal(): FAIL
+bakery_lint.tests.downstream.test_check_canonical_filenames.CheckCanonicalFilenames.test_check_canonical_filenames(): OK
+bakery_lint.tests.downstream.test_check_files_menu_agreements.CheckFontsMenuAgreements.test_menu_file_agreement(): FAIL
+bakery_lint.tests.downstream.test_check_metadata_fields.CheckMetadataFields.test_check_metadata_fields(): OK
+bakery_lint.tests.downstream.test_check_glyph_consistency.CheckGlyphConsistencyInFamily.test_the_same_encodings_of_glyphs_across_family(): OK
+bakery_lint.tests.downstream.test_check_glyph_consistency.CheckGlyphConsistencyInFamily.test_the_same_names_of_glyphs_across_family(): OK
+bakery_lint.tests.downstream.test_check_glyph_consistency.CheckGlyphConsistencyInFamily.test_the_same_number_of_glyphs_across_family(): OK
+bakery_lint.tests.downstream.test_check_metadata_matches_nametable.CheckMetadataMatchesNameTable.test_check_metadata_matches_nametable(): OK
+bakery_lint.tests.downstream.test_check_vertical_metrics.CheckVerticalLinegapMetrics.test_metrics_linegaps_are_zero(): OK
+bakery_lint.tests.downstream.test_check_vertical_metrics.CheckVerticalAscentMetrics.test_metrics_ascents_equal_bbox(): OK
+bakery_lint.tests.downstream.test_check_vertical_metrics.CheckVerticalDescentMetrics.test_metrics_descents_equal_bbox(): OK
+bakery_lint.tests.downstream.test_gasp_table_value.CheckGaspTableType.test_check_gasp_table_type(): FAIL
+$ bakery-gasp.py --set=15 /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+$ mv /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf.fix /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+bakery_lint.tests.downstream.test_gasp_table_value.CheckGaspTableType.test_check_gasp_table_type(): OK
+$ bakery-gasp.py --set=15 /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+$ mv /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf.fix /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+bakery_lint.tests.downstream.test_check_names_same_across_platforms.CheckNamesSameAcrossPlatforms.test_check_names_same_across_platforms(): FAIL
+bakery_lint.tests.downstream.test_check_glyf_table_length.CheckGlyfTableLength.test_check_glyf_table_length(): FAIL
+bakery_lint.tests.downstream.test_check_full_font_name_begins_with_family_name.CheckFullFontNameBeginsWithFamilyName.test_check_full_font_name_begins_with_family_name(): OK
+bakery_lint.tests.downstream.test_check_no_problematic_formats.CheckNoProblematicFormats.test_check_no_problematic_formats(): OK
+The following table(s) in the font have been ignored by FontForge
+  Ignoring 'DSIG' digital signature table
+This font contains both a 'mor[tx]' table and a 'GSUB' table.
+  FF will only read feature/settings in 'morx' which do not match features
+  found in 'GSUB'.
+Warning: Mac and Windows entries in the 'name' table differ for the
+ Copyright string in the language English (US)
+ Mac String: Copyright (c) 2010, Danh Hong (khmertype.blogspot.com),??with Reserved Font Name Khmer OS Content.??This Font Software is licensed under the SIL Open Font License, Version 1.1.??This license is available with a FAQ at: http://scripts.sil.org/OFL
+Windows String: Copyright
+bakery_lint.tests.downstream.test_fontforge_validation_state.FontForgeValidateStateTest.test_allowed_numbers_paths_in_composite_glyphs(): OK
+bakery_lint.tests.downstream.test_fontforge_validation_state.FontForgeValidateStateTest.test_allowed_numbers_paths_in_glyphs(): OK
+bakery_lint.tests.downstream.test_fontforge_validation_state.FontForgeValidateStateTest.test_allowed_numbers_points_in_composite_glyphs(): OK
+bakery_lint.tests.downstream.test_fontforge_validation_state.FontForgeValidateStateTest.test_allowed_numbers_points_in_glyphs(): OK
+bakery_lint.tests.downstream.test_fontforge_validation_state.FontForgeValidateStateTest.test_duplicate_glyphs(): OK
+bakery_lint.tests.downstream.test_fontforge_validation_state.FontForgeValidateStateTest.test_duplicate_unicode_codepoints(): OK
+bakery_lint.tests.downstream.test_fontforge_validation_state.FontForgeValidateStateTest.test_flipped_reference_in_glyphs(): OK
+bakery_lint.tests.downstream.test_fontforge_validation_state.FontForgeValidateStateTest.test_missing_anchors(): OK
+bakery_lint.tests.downstream.test_fontforge_validation_state.FontForgeValidateStateTest.test_missing_extrema_in_glyphs(): OK
+bakery_lint.tests.downstream.test_fontforge_validation_state.FontForgeValidateStateTest.test_overlapped_hints(): OK
+bakery_lint.tests.downstream.test_fontforge_validation_state.FontForgeValidateStateTest.test_points_are_integer_aligned(): OK
+bakery_lint.tests.downstream.test_fontforge_validation_state.FontForgeValidateStateTest.test_points_are_not_too_far_apart(): OK
+bakery_lint.tests.downstream.test_fontforge_validation_state.FontForgeValidateStateTest.test_postscript_hasnt_limit_hints_in_glyphs(): OK
+bakery_lint.tests.downstream.test_fontforge_validation_state.FontForgeValidateStateTest.test_postscript_hasnt_limit_points_in_glyphs(): OK
+bakery_lint.tests.downstream.test_fontforge_validation_state.FontForgeValidateStateTest.test_referenced_glyphs_are_present(): OK
+bakery_lint.tests.downstream.test_fontforge_validation_state.FontForgeValidateStateTest.test_valid_glyph_names(): OK
+bakery_lint.tests.downstream.test_fontforge_validation_state.FontForgeValidateStateTest.test_valid_length_instructions(): OK
+bakery_lint.tests.downstream.test_fontforge_validation_state.FontForgeValidateStateTest.test_validation_glyph_intersect(): OK
+bakery_lint.tests.downstream.test_fontforge_validation_state.FontForgeValidateStateTest.test_validation_open_contours(): OK
+bakery_lint.tests.downstream.test_fontforge_validation_state.FontForgeValidateStateTest.test_wrong_direction_in_glyphs(): OK
+bakery_lint.tests.downstream.test_check_fontname_matches_macstyle.CheckFontNameEqualToMacStyleFlags.test_fontname_is_equal_to_macstyle(): FAIL
+bakery_lint.tests.downstream.test_check_os2_width_class.CheckOS2WidthClass.test_check_os2_width_class(): OK
+bakery_lint.tests.downstream.test_check_unencoded_glyph.TestFontUnencodedGlyph.test_font_unencoded_glyphs(): FAIL
+$ bakery-encode-glyphs-fix.py --autofix /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+$ mv /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf.fix /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+bakery_lint.tests.downstream.test_check_unencoded_glyph.TestFontUnencodedGlyph.test_font_unencoded_glyphs(): FAIL
+bakery_lint.tests.downstream.test_check_license_included.CheckLicenseIncluded.test_license_included_in_font_names(): ERROR
+bakery_lint.tests.downstream.test_check_unused_glyph_data.CheckUnusedGlyphData.test_check_unused_glyph_data(): ERROR
+bakery_lint.tests.downstream.test_check_italic_angle_agreement.CheckItalicAngleAgreement.test_check_italic_angle_agreement(): OK
+### Optimize TTF Content-Bold.ttf
+$ ls -l 'Content-Bold.ttf'* # look at the size savings of that subset process
+Content-Bold.ttf.opt: 195076 bytes
+Content-Bold.ttf: 295488 bytes
+$ mv /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf.opt /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+### Autohint TTFs (ttfautohint) Content-Bold.ttf
+$ ls -l /home/travis/build/fontdirectory/content/builds/build/Content-Bold.*ttf # look at the size savings of that subset process
+/home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf: 195076 bytes
+/home/travis/build/fontdirectory/content/builds/build/Content-Bold.autohint.ttf: 321900 bytes
+$ mv /home/travis/build/fontdirectory/content/builds/build/Content-Bold.autohint.ttf /home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+### Subset TTFs (pyftsubset) Content-Bold.ttf
+Generate Content-Bold.latin
+Generate Content-Bold.menu
+spaceWidth is    569
+nbspWidth is     569
+Nothing to do
+strippedname:/home/travis/build/fontdirectory/content/builds/build/Content-Bold.ttf
+{
+  "name": "Content", 
+  "designer": "Danh Hong", 
+  "license": "OFL", 
+  "visibility": "External", 
+  "category": "Display", 
+  "size": 64158, 
+  "fonts": [
+    {
+      "name": "Content", 
+      "postScriptName": "Content", 
+      "fullName": "Content", 
+      "style": "normal", 
+      "weight": 400, 
+      "filename": "Content-Regular.ttf", 
+      "copyright": "Copyright (c) 2010, Danh Hong (khmertype.blogspot.com),??with Reserved Font Name Khmer OS Content.??This Font Software is licensed under the SIL Open Font License, Version 1.1.??This license is available with a FAQ at: http://scripts.sil.org/OFL"
+    }, 
+    {
+      "name": "Content", 
+      "postScriptName": "Content-Bold", 
+      "fullName": "Content Bold", 
+      "style": "normal", 
+      "weight": 700, 
+      "filename": "Content-Bold.ttf", 
+      "copyright": "Copyright (c) 2010, Danh Hong (khmertype.blogspot.com),??with Reserved Font Name Khmer OS Content.??This Font Software is licensed under the SIL Open Font License, Version 1.1.??This license is available with a FAQ at: http://scripts.sil.org/OFL"
+    }
+  ], 
+  "subsets": [
+    "latin"
+  ], 
+  "dateAdded": "2011-03-02"
+}
